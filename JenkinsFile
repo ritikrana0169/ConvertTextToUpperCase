@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo "Cloning the repo..."
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Pretend to build something here"
+                // Example: sh 'mvn clean install' or npm install
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running dummy tests..."
+                // Example: sh 'npm test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying dummy code to test environment..."
+                // Example: sh './deploy.sh'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
